@@ -19,9 +19,20 @@ interface ExpensesPageState {
 type Props = ExpensesPageProps & LinkStateProps & LinkDispatchProps;
 
 export class ExpensesPage extends React.Component<Props, ExpensesPageState> {
-    async componentDidMount() {
-        await this.props.startFetchExpenses(0);
-        this.onFilterChange('');      
+    componentDidMount() {
+        this.fetchExpenses();
+    }
+
+    async fetchExpenses(page?: number) {
+        let paginationPage: number;
+        if (page === undefined) {
+            paginationPage = 0;
+        }
+        else {
+            paginationPage = page;
+        }
+        await this.props.startFetchExpenses(paginationPage)
+        this.onFilterChange('');
     }
 
     onFilterChange = (value: any) => {
@@ -60,7 +71,7 @@ export class ExpensesPage extends React.Component<Props, ExpensesPageState> {
                     ? <ListOfExpenses
                         expenses={this.state.filteredArray}
                         total={total}
-                        goToPage={(page) => this.props.startFetchExpenses(page)} />
+                        goToPage={(page) => { this.fetchExpenses(page) }} />
                     : null
                 }
             </>
