@@ -1,12 +1,13 @@
 import React from 'react';
+import '../Filter/filter.scss';
 
 function FilterInput(props: any) {
-    return (
-            <label>
-                    <input type={props.type} onChange={props.onChange} value={props.value}/>
-                    {props.label}
-            </label>
-    );
+        return (
+                <label className="filter-field">
+                        {props.label}:
+                        <input type={props.type} onChange={props.onChange} value={props.value} />
+                </label>
+        );
 }
 
 export default FilterInput;

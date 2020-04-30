@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './pagination.scss'; 
 
 interface IPaginationProps {
     numberOfItems: number
@@ -44,9 +45,9 @@ class Pagination extends Component<IPaginationProps, IPaginationState> {
         return (
             <>
                 <td colSpan={7} className="pagination">
-                    <button onClick={this.goToPrevPage}>&lt;</button>
-                    {`${this.state.currentIndex + 1} of ${this.state.pages}`}
-                    <button onClick={this.goToNextPage}>&gt;</button>
+                    <a href='#0' onClick={this.goToPrevPage}>&lt;</a>
+                    <span>{`${this.state.currentIndex + 1} of ${this.state.pages}`}</span>
+                    <a href='#0' onClick={this.goToNextPage}>&gt;</a>
                 </td>
             </>
         );

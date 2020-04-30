@@ -20,12 +20,12 @@ class ExpenseItem extends Component<IExpenseItemProps> {
     return (
       <>
         <tr>
-          <td>{amount}</td>
-          <td>{date}</td>
-          <td>{merchant}</td>
-          <td>{userName}</td>
-          <td>{receipts}</td>
-          <td>{comment}</td>
+          <td data-title="Amount">{amount}</td>
+          <td data-title="Date">{date}</td>
+          <td data-title="Merchant">{merchant}</td>
+          <td data-title="User">{userName}</td>
+          <td data-title="Receipts">{receipts}</td>
+          <td data-title="Comment">{comment}</td>
           <td>
             <Link
               to={{

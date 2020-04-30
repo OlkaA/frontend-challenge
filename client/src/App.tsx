@@ -7,7 +7,7 @@ import HomePage from './pages/HomePage/HomePage';
 import ExpensesPage from './pages/ExpensesPage/ExpensesPage';
 import ExpensePage from './pages/ExpensePage/ExpensePage';
 
-import './App.css';
+import './App.scss';
 
 
 const App: React.FC = () => {
