@@ -1,9 +1,14 @@
+$main-font-size: 14px;
+$main-font-family: Arial;
+
 .App {
   /* //text-align: center; */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 20px 10px;
+  padding: 20px 30px 50px;
+  font-size: $main-font-size;
+  font-family: $main-font-family;
 }
 
 a {
@@ -22,6 +27,8 @@ button {
   margin: 0px 10px;
   cursor: pointer;
   border-radius: 5px;
+  font-size: $main-font-size;
+  font-family: $main-font-family;
 
   &:focus {
     outline: none;
