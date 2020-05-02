@@ -6,15 +6,27 @@
   padding: 20px 10px;
 }
 
-a{
+a {
   text-decoration: none;
   color: darkgrey;
 
-  &:hover{
+  &:hover {
     color: rgb(11, 11, 73);
     cursor: pointer;
   }
 }
 
+button {
+  border: none;
+  background-color: transparent;
+  margin: 0px 10px;
+  cursor: pointer;
+  border-radius: 5px;
 
-
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    outline: 1px solid white;
+  }
+}
