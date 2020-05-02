@@ -10,15 +10,20 @@ import { ThunkDispatch } from 'redux-thunk';
 import ListOfExpenses from '../../components/ListOfExpenses/ListOfExpenses';
 import Filter from '../../components/Filter/Filter';
 
-interface ExpensesPageProps {
-}
+interface ExpensesPageProps { }
 interface ExpensesPageState {
-    filteredArray: Expense[]
+    filteredArray: Expense[];
+    isSorted: boolean;
 }
 
 type Props = ExpensesPageProps & LinkStateProps & LinkDispatchProps;
 
 export class ExpensesPage extends React.Component<Props, ExpensesPageState> {
+    state: ExpensesPageState = {
+        filteredArray: [],
+        isSorted: false,
+    };
+
     componentDidMount() {
         this.fetchExpenses();
     }
@@ -27,11 +32,10 @@ export class ExpensesPage extends React.Component<Props, ExpensesPageState> {
         let paginationPage: number;
         if (page === undefined) {
             paginationPage = 0;
-        }
-        else {
+        } else {
             paginationPage = page;
         }
-        await this.props.startFetchExpenses(paginationPage)
+        await this.props.startFetchExpenses(paginationPage);
         this.onFilterChange('');
     }
 
@@ -61,26 +65,45 @@ export class ExpensesPage extends React.Component<Props, ExpensesPageState> {
         this.setState({ filteredArray });
     };
 
+    sortList = (value: string) => {
+        let sortedArray: Expense[] = [];
+        sortedArray = this.state.filteredArray.sort((a: any, b: any) => {
+            if (this.state.isSorted) {
+                this.setState({ isSorted: false });
+                return value !== 'user' ? a[value].localeCompare(b[value]) : a[value].first.localeCompare(b[value].first);
+            } else {
+                this.setState({ isSorted: true });
+                return value !== 'user' ? b[value].localeCompare(a[value]) : b[value].first.localeCompare(a[value].first);
+            }
+        });
+        this.setState({ filteredArray: sortedArray });
+    };
+
     render() {
-        const { total } = this.props.data
+        const { total } = this.props.data;
         return (
             <>
                 <h1>List of expenses</h1>
                 <Filter onFilterChange={this.onFilterChange} />
-                {this.state && this.state.filteredArray.length > 0
-                    ? <ListOfExpenses
+                {this.state && this.state.filteredArray.length > 0 ? (
+                    <ListOfExpenses
                         expenses={this.state.filteredArray}
                         total={total}
-                        goToPage={(page) => { this.fetchExpenses(page) }} />
-                    : null
-                }
+                        goToPage={(page) => {
+                            this.fetchExpenses(page);
+                        }}
+                        sortList={(string) => {
+                            this.sortList(string);
+                        }}
+                    />
+                ) : null}
             </>
         );
     }
 }
 
 interface LinkStateProps {
-    data: { expenses: Expense[], total: number }
+    data: { expenses: Expense[]; total: number };
 }
 interface LinkDispatchProps {
     startFetchExpenses: (page?: number) => void;
@@ -90,19 +113,16 @@ const mapStateToProps = (
     state: AppState,
     ownProps: ExpensesPageProps
 ): LinkStateProps => {
-    return ({
-        data: state.data
-    });
-}
+    return {
+        data: state.data,
+    };
+};
 
 const mapDispatchToProps = (
     dispatch: ThunkDispatch<any, any, AppActions>,
     ownProps: ExpensesPageProps
 ): LinkDispatchProps => ({
-    startFetchExpenses: bindActionCreators(startFetchExpenses, dispatch)
+    startFetchExpenses: bindActionCreators(startFetchExpenses, dispatch),
 });
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ExpensesPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ExpensesPage);
