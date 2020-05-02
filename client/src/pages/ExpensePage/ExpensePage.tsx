@@ -105,7 +105,7 @@ class ExpensePage extends Component<
             </>
           ) : (
             <>
-              <div className="no-data">You haven't added any receipts yet.</div>
+              <div className="no-data">There are no receipts.</div>
             </>
           )}
         </div>
@@ -125,7 +125,7 @@ class ExpensePage extends Component<
           {comment !== "-" ? (
             <div className="no-data">{comment}</div>
           ) : (
-            <div className="no-data">You haven't added any comments yet.</div>
+            <div className="no-data">There are no comment.</div>
           )}
         </div>
       </div>

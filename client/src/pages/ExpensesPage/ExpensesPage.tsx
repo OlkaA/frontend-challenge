@@ -11,16 +11,16 @@ import { ThunkDispatch } from 'redux-thunk';
 import ListOfExpenses from '../../components/ListOfExpenses/ListOfExpenses';
 import Filter from '../../components/Filter/Filter';
 
-interface ExpensesPageProps {}
-interface ExpensesPageState {
+interface IExpensesPageProps {}
+interface IExpensesPageState {
   filteredArray: Expense[];
   isSorted: boolean;
 }
 
-type Props = ExpensesPageProps & LinkStateProps & LinkDispatchProps;
+type Props = IExpensesPageProps & LinkStateProps & LinkDispatchProps;
 
-export class ExpensesPage extends React.Component<Props, ExpensesPageState> {
-  state: ExpensesPageState = {
+export class ExpensesPage extends React.Component<Props, IExpensesPageState> {
+  state: IExpensesPageState = {
     filteredArray: [],
     isSorted: false,
   };
@@ -123,7 +123,7 @@ interface LinkDispatchProps {
 
 const mapStateToProps = (
   state: AppState,
-  ownProps: ExpensesPageProps
+  ownProps: IExpensesPageProps
 ): LinkStateProps => {
   return {
     data: state.data,
@@ -132,7 +132,7 @@ const mapStateToProps = (
 
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<any, any, AppActions>,
-  ownProps: ExpensesPageProps
+  ownProps: IExpensesPageProps
 ): LinkDispatchProps => ({
   startFetchExpenses: bindActionCreators(startFetchExpenses, dispatch),
 });
