@@ -55,7 +55,7 @@ class Comment extends Component<ICommentProps, ICommentState> {
             }
           }}
         />
-        <button onClick={this.addComment}>{this.props.placeholder}</button>
+        <button className='add-comment' onClick={this.addComment}>{this.props.placeholder}</button>
       </>
     );
   }

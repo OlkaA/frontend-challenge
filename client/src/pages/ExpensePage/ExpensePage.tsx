@@ -4,6 +4,7 @@ import { Expense } from '../../types/Expense';
 import Receipts from '../../components/Receipts/Receipts';
 import Comment from '../../components/Comment/Comment';
 import moment from 'moment';
+import './expense.scss';
 
 interface IExpensePageProps {
 };
@@ -45,47 +46,40 @@ class ExpensePage extends Component<IExpensePageProps & RouteComponentProps, IEx
     }
 
     return (
-      <>
-      Expense
-      <p>Date: {date}</p>
-        <p>Amount: {amount}</p>
-        <p>Merchant: {merchant}</p>
-        <p>User: {userName}</p>
-        <p>User email: {userEmail}</p>
-        <div>
-          Receipts:
+      <div className='expense-page'>
+        <h1>Expense</h1>
+        <p className='space-between'><span>Date:</span><span>{date}</span></p>
+        <p className='space-between'><span>Amount:</span><span>{amount}</span></p>
+        <p className='space-between'><span>Merchant:</span><span>{merchant}</span></p>
+        <p className='space-between'><span>User:</span><span>{userName}</span></p>
+        <p className='space-between'><span>User email:</span><span>{userEmail}</span></p>
+        <div className='space-between'>
+          <div className="column"><span>Receipts:</span>
+            <Receipts userId={this.state.id} fetchExpense={() => this.fetchExpense(this.state.id)} />{' '}</div>
           {receipts && receipts.length > 0 ? (
             <>
-              <div>You have {receipts.length} {receipts.length === 1 ? 'receipt' : 'receipts'}</div>
-              <Receipts userId={this.state.id} fetchExpense={() => this.fetchExpense(this.state.id)} />{' '} 
+              <div className='no-data'>You have {receipts.length} {receipts.length === 1 ? 'receipt' : 'receipts'}</div>
             </>
           ) : (
-            // <></>
-            <Receipts userId={this.state.id} fetchExpense={() => this.fetchExpense(this.state.id)} />
-          )
+              <>
+                <div className='no-data'>You haven't added any receipts yet.</div>
+              </>
+            )
           }
         </div>
-        <p>Category: {category}</p>
-        <div>
-          Comment:
-          {comment !== '-' ? (
-            <>
-              <div>{comment}</div>{' '}
-              <Comment
-                placeholder='Change comment'
-                userId={this.state.id}
-                fetchExpense={() => this.fetchExpense(this.state.id)}
-              />{' '}
-            </>
-          ) : (
+        <p className='space-between'><span>Category:</span><span>{category}</span></p>
+        <div className='space-between'>
+          <div className="column"><span>Comment:</span>
             <Comment
-              placeholder='Add comment'
+              placeholder='Change comment'
               userId={this.state.id}
               fetchExpense={() => this.fetchExpense(this.state.id)}
             />
-          )}
+            </div>
+            {comment !== '-' ? <div className='no-data'>{comment}</div> : <div className='no-data'>You haven't added any comments yet.</div>}
+          </div>
         </div>
-      </>
+      
     )
   }
 };
