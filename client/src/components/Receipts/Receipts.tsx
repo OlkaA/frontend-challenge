@@ -16,7 +16,7 @@ const Receipts: FunctionComponent<IReceiptsProps> = ({
       let receipt = new FormData();
       receipt.append('receipt', event.target.files[0]);
       const response = await fetch(
-        `http://localhost:3000/expenses/${userId}/receipts`,
+        `/expenses/${userId}/receipts`,
         {
           method: 'POST',
           body: receipt,

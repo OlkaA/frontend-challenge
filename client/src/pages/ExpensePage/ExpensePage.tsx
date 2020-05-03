@@ -30,7 +30,7 @@ class ExpensePage extends Component<
   }
 
   fetchExpense = async (id: string) => {
-    const response = await fetch(`http://localhost:3000/expenses/${id}`);
+    const response = await fetch(`/expenses/${id}`);
     const currentExpense = await response.json();
     this.setState({ currentExpense });
   };

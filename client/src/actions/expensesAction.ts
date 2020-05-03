@@ -25,7 +25,7 @@ export const startFetchExpenses = (
       offset = page * 25;
     }
     const response = await fetch(
-      `http://localhost:3000/expenses?limit=${limit}&offset=${offset}`
+      `/expenses?limit=${limit}&offset=${offset}`
     );
     const expenses = await response.json();
     dispatch(fetchExpenses(expenses.expenses, expenses.total));

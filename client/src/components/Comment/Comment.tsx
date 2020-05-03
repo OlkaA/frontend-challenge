@@ -25,7 +25,7 @@ class Comment extends Component<ICommentProps, ICommentState> {
   addComment = async () => {
     if (this.state.comment && this.props.userId) {
       const response = await fetch(
-        `http://localhost:3000/expenses/${this.props.userId}`,
+        `/expenses/${this.props.userId}`,
         {
           method: 'POST',
           headers: {
