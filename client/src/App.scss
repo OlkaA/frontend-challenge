@@ -9,6 +9,7 @@ $main-font-family: Arial;
   padding: 20px 30px 50px;
   font-size: $main-font-size;
   font-family: $main-font-family;
+  min-height: 90vh;
 }
 
 a {
@@ -36,4 +37,17 @@ button {
   &:active {
     outline: 1px solid white;
   }
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.align-center{
+  justify-content: center;
+  align-items: center;
 }

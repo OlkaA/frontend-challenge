@@ -26,14 +26,7 @@
     text-align: right;
   }
 }
-.space-between {
-  display: flex;
-  justify-content: space-between;
-}
-.column {
-  display: flex;
-  flex-direction: column;
-}
+
 
 @media only screen and (min-width: 768px) {
   .expense-page {
