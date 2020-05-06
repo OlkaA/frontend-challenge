@@ -14,7 +14,7 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <div className='App'>
-        <Router  basename="/pleo">
+        <Router>
           <Switch>
             <Route exact path='/' component={HomePage} />
             {/* <Route exact path='/about' component={AboutPage} /> */}
