@@ -25,6 +25,13 @@ app.use('/receipts', express.static(path.join(__dirname, 'receipts')))
 
 app.use('/expenses', expensesRouter)
 
+app.use(express.static(path.join(__dirname, 'build')));
+
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 app.use(function(req, res, next) {
   next(createError(404))
 })
@@ -41,6 +48,8 @@ app.use(function(err, req, res, next) {
     error
   })
 })
+
+
 
 app.listen(3001)
 console.log('API running at http://localhost:3001')
