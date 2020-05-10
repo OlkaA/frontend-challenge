@@ -1,26 +1,66 @@
-$main-font-size: 14px;
-$main-font-family: Arial;
+@import './scss/variables.scss';
 
 .App {
-  /* //text-align: center; */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 20px 30px 50px;
   font-size: $main-font-size;
   font-family: $main-font-family;
-  min-height: 90vh;
+  background-color: rgb(226, 223, 223);
+}
+
+.page {
+  width: calc(100% - 40px);
+  padding: 20px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 768px) {
+  .page {
+    max-width: 1200px;
+    padding: 100px 50px 0;
+  }
 }
 
 a {
   text-decoration: none;
-  color: darkgrey;
+  color: $home-color;
+  text-shadow: 1px 1px black;
 
   &:hover {
-    color: rgb(11, 11, 73);
+    color: #366774;
     cursor: pointer;
   }
 }
+
+.go-back-button {
+  max-width: 100px;
+  font-size: 20px;
+  text-shadow: unset;
+  color: $header-color;
+}
+
+@media only screen and (min-width: 768px) {
+  .go-back-button {
+    font-size: 40px;
+  }
+}
+
+h1 {
+  font-size: 36px;
+  color: $header-color;
+  text-shadow: 1px 1px black;
+}
+
+@media only screen and (min-width: 768px) {
+  h1 {
+    font-size: 48px;
+  }
+}
+
 
 button {
   border: none;
@@ -47,7 +87,7 @@ button {
   display: flex;
   flex-direction: column;
 }
-.align-center{
+.align-center {
   justify-content: center;
   align-items: center;
 }

@@ -1,0 +1,31 @@
+@import '../../scss/variables.scss';
+
+.home-page-wrapper {
+  background: rgb(226, 223, 223) url("../../images/white-laptop-female-hand-note-pen-phone-desk-6471.jpg") no-repeat;
+  background-size: cover;
+  max-width: 100%;
+}
+
+.home-page{
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 768px) {
+  .home-page{
+    width: calc(100% - 100px);
+    padding: 0 50px;
+  }
+}
+
+h1.home-page-title {
+  color: $home-color;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
