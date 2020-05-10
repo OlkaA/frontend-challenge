@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { RouteComponentProps } from "react-router";
-import { Link } from "react-router-dom";
-import { Expense } from "../../types/Expense";
-import Receipts from "../../components/Receipts/Receipts";
-import Comment from "../../components/Comment/Comment";
-import moment from "moment";
-import "./expense.scss";
+import React, { Component } from 'react';
+import { RouteComponentProps } from 'react-router';
+import { Link } from 'react-router-dom';
+import { Expense } from '../../types/Expense';
+import Receipts from '../../components/Receipts/Receipts';
+import Comment from '../../components/Comment/Comment';
+import moment from 'moment';
+import './expense.scss';
 
-interface IExpensePageProps {}
+interface IExpensePageProps { }
 
 interface IExpensePageState {
   id: string;
@@ -17,9 +17,9 @@ interface IExpensePageState {
 class ExpensePage extends Component<
   IExpensePageProps & RouteComponentProps,
   IExpensePageState
-> {
+  > {
   state: IExpensePageState = {
-    id: "",
+    id: '',
     currentExpense: null,
   };
 
@@ -49,18 +49,18 @@ class ExpensePage extends Component<
       Object.entries(this.state.currentExpense).length > 0
     ) {
       merchant = this.state.currentExpense.merchant;
-      date = moment(this.state.currentExpense.date).format("L");
+      date = moment(this.state.currentExpense.date).format('L');
       amount = `${this.state.currentExpense.amount.value} ${this.state.currentExpense.amount.currency}`;
       userName = `${this.state.currentExpense.user.first} ${this.state.currentExpense.user.last}`;
       userEmail = this.state.currentExpense.user.email;
       receipts = this.state.currentExpense.receipts;
-      comment = this.state.currentExpense.comment || "-";
-      category = this.state.currentExpense.category || "-";
+      comment = this.state.currentExpense.comment || '-';
+      category = this.state.currentExpense.category || '-';
     }
-    
+
     return (
-      <div className="expense-page">
-        <Link
+      <div className='page expense-page'>
+        <Link className='go-back-button'
           to={{
             pathname: `/expenses`,
           }}
@@ -68,65 +68,67 @@ class ExpensePage extends Component<
           &#8592;
         </Link>
         <h1>Expense</h1>
-        <p className="space-between">
-          <span>Date:</span>
-          <span>{date}</span>
-        </p>
-        <p className="space-between">
-          <span>Amount:</span>
-          <span>{amount}</span>
-        </p>
-        <p className="space-between">
-          <span>Merchant:</span>
-          <span>{merchant}</span>
-        </p>
-        <p className="space-between">
-          <span>User:</span>
-          <span>{userName}</span>
-        </p>
-        <p className="space-between">
-          <span>User email:</span>
-          <span>{userEmail}</span>
-        </p>
-        <div className="space-between">
-          <div className="column">
-            <span>Receipts:</span>
-            <Receipts
-              userId={this.state.id}
-              fetchExpense={() => this.fetchExpense(this.state.id)
-              }
-            />{" "}
+        <div className='expense-info'>
+          <div className='row'>
+            <span>Date:</span>
+            <span>{date}</span>
           </div>
-          {receipts && receipts.length > 0 ? (
-            <>
-              <div className="no-data">
-                {receipts.length === 1 ? `${receipts.length} receipt` : `${receipts.length} receipts`}
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="no-data">There are no receipts.</div>
-            </>
-          )}
-        </div>
-        <p className="space-between">
-          <span>Category:</span>
-          <span>{category}</span>
-        </p>
-        <div className="space-between">
-          <div className="column">
-            <span>Comment:</span>
-            <Comment
-              placeholder="Change comment"
-              userId={this.state.id}
-              fetchExpense={() => this.fetchExpense(this.state.id)}
-            />
+          <div className='row'>
+            <span>Amount:</span>
+            <span>{amount}</span>
           </div>
-          {comment !== "-" ? (
-            <div className="no-data">{comment}</div>
-          ) : (
-            <div className="no-data">There are no comment.</div>
-          )}
+          <div className='row'>
+            <span>Merchant:</span>
+            <span>{merchant}</span>
+          </div>
+          <div className='row'>
+            <span>User:</span>
+            <span>{userName}</span>
+          </div>
+          <div className='row'>
+            <span>User email:</span>
+            <span>{userEmail}</span>
+          </div>
+          <div className='row'>
+            <span className='column'>
+              <span>Receipts:</span>
+              <Receipts
+                userId={this.state.id}
+                fetchExpense={() => this.fetchExpense(this.state.id)
+                }
+              />{' '}
+            </span>
+            {receipts && receipts.length > 0 ? (
+              <>
+                <span className='no-data'>
+                  {receipts.length === 1 ? `${receipts.length} receipt` : `${receipts.length} receipts`}
+                </span>
+              </>
+            ) : (
+                <>
+                  <span className='no-data'>There are no receipts.</span>
+                </>
+              )}
+          </div>
+          <div className='row'>
+            <span>Category:</span>
+            <span>{category}</span>
+          </div>
+          <div className='row'>
+            <span className='column'>
+              <span>Comment:</span>
+              <Comment
+                placeholder='Change comment'
+                userId={this.state.id}
+                fetchExpense={() => this.fetchExpense(this.state.id)}
+              />
+            </span>
+            {comment !== '-' ? (
+              <span className='no-data'>{comment}</span>
+            ) : (
+                <span className='no-data'>There are no comment.</span>
+              )}
+          </div>
         </div>
       </div>
     );

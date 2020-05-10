@@ -10,8 +10,6 @@ const Receipts: FunctionComponent<IReceiptsProps> = ({
   fetchExpense,
 }) => {
   const addReceipt = async (event: any) => {
-    console.log(event.target.files);
-    console.log(event.target.files[0]);
     if (userId) {
       let receipt = new FormData();
       receipt.append('receipt', event.target.files[0]);
@@ -28,7 +26,7 @@ const Receipts: FunctionComponent<IReceiptsProps> = ({
   };
 
   return (
-    <label>
+    <label className='receipt-label'>
       <input type='file' name='file' title=' ' onChange={addReceipt} />
       Add receipt
     </label>
