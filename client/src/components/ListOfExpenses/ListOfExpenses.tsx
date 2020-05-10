@@ -22,8 +22,8 @@ class ListOfExpenses extends React.Component<IListOfExpensesProps> {
             <tr>
               <th>Amount</th>
               <th>Date</th>
-              <th>Merchant <Button onClick={() => this.props.sortList('merchant')} value='&#8597;'/></th>
-              <th>User <Button onClick={() => this.props.sortList('user')} value='&#8597;'/></th>
+              <th>Merchant <Button onClick={() => this.props.sortList('merchant')} value='&#8597;' /></th>
+              <th>User <Button onClick={() => this.props.sortList('user')} value='&#8597;' /></th>
               <th>Receipts</th>
               <th>Comments</th>
               <th></th>
@@ -37,7 +37,7 @@ class ListOfExpenses extends React.Component<IListOfExpensesProps> {
           <tfoot>
             <tr>
               <td colSpan={7}>
-                {this.props.total ? <Pagination numberOfItems={this.props.total} goToPage={(page) => this.props.goToPage(page)}/> : null}
+                {this.props.total ? <Pagination numberOfItems={this.props.total} goToPage={(page) => this.props.goToPage(page)} /> : null}
               </td>
             </tr>
           </tfoot>

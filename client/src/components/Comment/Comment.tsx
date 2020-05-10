@@ -19,7 +19,7 @@ class Comment extends Component<ICommentProps, ICommentState> {
   }
 
   onCommentChange = (event: any) => {
-    if(event.target.value.trim() !== ''){
+    if (event.target.value.trim() !== '') {
       this.setState({ comment: event.target.value })
     }
   };

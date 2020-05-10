@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import './pagination.scss'; 
-import Button from "../Button/Button";
+import React, { Component } from 'react';
+import './pagination.scss';
+import Button from '../Button/Button';
 
 interface IPaginationProps {
     numberOfItems: number
@@ -23,7 +23,7 @@ class Pagination extends Component<IPaginationProps, IPaginationState> {
     }
 
     componentDidMount() {
-        this.setState({ pages:  Math.ceil(this.props.numberOfItems / 25)})
+        this.setState({ pages: Math.ceil(this.props.numberOfItems / 25) })
     }
 
     goToNextPage = () => {
@@ -44,11 +44,11 @@ class Pagination extends Component<IPaginationProps, IPaginationState> {
 
     render() {
         return (
-                <div className="pagination">
-                    <Button onClick={this.goToPrevPage} value='&lt;' />
-                    <span>{`${this.state.currentIndex + 1} of ${this.state.pages}`}</span>
-                    <Button onClick={this.goToNextPage} value='&gt;' />
-                </div>
+            <div className='pagination'>
+                <Button onClick={this.goToPrevPage} value='&lt;' />
+                <span>{`${this.state.currentIndex + 1} of ${this.state.pages}`}</span>
+                <Button onClick={this.goToNextPage} value='&gt;' />
+            </div>
         );
     }
 }

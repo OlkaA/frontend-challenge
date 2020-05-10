@@ -29,10 +29,10 @@ class Filter extends Component<IFilterProps, IFilterState> {
 
     render() {
         return (
-            <div>
-                <FilterInput type="text" onChange={this.onsearchByNameChange} value={this.state.searchByName} label='Search by name' />
-                <FilterInput type="text" onChange={this.onsearchByPlace} value={this.state.searchByPlace} label='Search by place' />
-            </div>
+            <>
+                <FilterInput type='text' onChange={this.onsearchByNameChange} value={this.state.searchByName} label='Search by name' />
+                <FilterInput type='text' onChange={this.onsearchByPlace} value={this.state.searchByPlace} label='Search by place' />
+            </>
         );
     }
 }
