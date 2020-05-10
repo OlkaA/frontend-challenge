@@ -1,3 +1,5 @@
+@import '../../scss/variables.scss';
+
 table.list {
   width: 100%;
   border-collapse: collapse;
@@ -5,29 +7,40 @@ table.list {
   tr {
     border: 1px solid #ddd;
     padding: 8px;
+    background-color: #c8c7c7;
 
     &:nth-child(even) {
-      background-color: #f2f2f2;
+      background-color: $table-grey-color;
     }
     &:hover {
-      background-color: #ddd;
+      background-color: $header-color;
     }
   }
 
   th {
     padding: 12px 0;
     text-align: left;
-    background-color: #4caf50;
+    background-color: $main-color;
     color: white;
+
+    button{
+      color: white;
+    }
   }
   td{
     text-align: left;
+
+    a{
+      color: $main-color;
+      text-shadow: unset;
+    }
   }
   tfoot tr {
+    background-color: $table-grey-color;
     border: none !important; 
 
     &:hover{
-      background-color: transparent;
+      background-color: $table-grey-color;
     }
   }
 }

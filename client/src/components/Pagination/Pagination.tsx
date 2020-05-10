@@ -44,13 +44,11 @@ class Pagination extends Component<IPaginationProps, IPaginationState> {
 
     render() {
         return (
-            <>
-                <td colSpan={7} className="pagination">
+                <div className="pagination">
                     <Button onClick={this.goToPrevPage} value='&lt;' />
                     <span>{`${this.state.currentIndex + 1} of ${this.state.pages}`}</span>
                     <Button onClick={this.goToNextPage} value='&gt;' />
-                </td>
-            </>
+                </div>
         );
     }
 }

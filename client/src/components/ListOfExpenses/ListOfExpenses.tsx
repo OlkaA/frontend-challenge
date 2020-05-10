@@ -8,6 +8,7 @@ import './list.scss';
 interface IListOfExpensesProps {
   expenses: Expense[],
   total: number,
+  message: string,
   goToPage(page: number): void,
   sortList(stringName: string): void
 };
@@ -29,13 +30,15 @@ class ListOfExpenses extends React.Component<IListOfExpensesProps> {
             </tr>
           </thead>
           <tbody>
-            {this.props.expenses.map(item => {
+            {!this.props.message ? this.props.expenses.map(item => {
               return <ExpenseItem key={item.id} data={item} />;
-            })}
+            }) : <tr><td colSpan={7}>{this.props.message}</td></tr>}
           </tbody>
           <tfoot>
             <tr>
-              {this.props.total ? <Pagination numberOfItems={this.props.total} goToPage={(page) => this.props.goToPage(page)}/> : null}
+              <td colSpan={7}>
+                {this.props.total ? <Pagination numberOfItems={this.props.total} goToPage={(page) => this.props.goToPage(page)}/> : null}
+              </td>
             </tr>
           </tfoot>
         </table>

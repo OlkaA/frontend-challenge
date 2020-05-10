@@ -11,7 +11,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import ListOfExpenses from '../../components/ListOfExpenses/ListOfExpenses';
 import Filter from '../../components/Filter/Filter';
 
-interface IExpensesPageProps {}
+interface IExpensesPageProps { }
 interface IExpensesPageState {
   filteredArray: Expense[];
   isSorted: boolean;
@@ -87,8 +87,8 @@ export class ExpensesPage extends React.Component<Props, IExpensesPageState> {
   render() {
     const { total } = this.props.data;
     return (
-      <>
-        <Link
+      <div className='page'>
+        <Link className='go-back-button'
           to={{
             pathname: `/`,
           }}
@@ -97,7 +97,7 @@ export class ExpensesPage extends React.Component<Props, IExpensesPageState> {
         </Link>
         <h1>List of expenses</h1>
         <Filter onFilterChange={this.onFilterChange} />
-        {this.state && this.state.filteredArray.length > 0 ? (
+        {this.state ? (
           <ListOfExpenses
             expenses={this.state.filteredArray}
             total={total}
@@ -107,9 +107,10 @@ export class ExpensesPage extends React.Component<Props, IExpensesPageState> {
             sortList={(string) => {
               this.sortList(string);
             }}
+            message={this.state.filteredArray.length > 0 ? '' : 'No match'}
           />
         ) : null}
-      </>
+      </div>
     );
   }
 }
