@@ -6,6 +6,8 @@ import { store } from './store';
 import HomePage from './pages/HomePage/HomePage';
 import ExpensesPage from './pages/ExpensesPage/ExpensesPage';
 import ExpensePage from './pages/ExpensePage/ExpensePage';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
+import AboutPage from './pages/AboutPage/AboutPage';
 
 import './App.scss';
 
@@ -17,10 +19,10 @@ const App: React.FC = () => {
         <Router>
           <Switch>
             <Route exact path='/' component={HomePage} />
-            {/* <Route exact path='/about' component={AboutPage} /> */}
+            <Route exact path='/about' component={AboutPage} />
             <Route exact path='/expenses' component={ExpensesPage} />
             <Route exact path='/expenses/:id' component={ExpensePage} />
-            {/* <Route exact path='/*' component={ErrorPage} /> */}
+            <Route exact path='/*' component={ErrorPage} />
           </Switch>
         </Router>
       </div>
