@@ -19,6 +19,6 @@
     "@types/http-errors": "^1.6.1",
     "prettier": "1.14.2",
     "ts-node": "^7.0.1",
-    "typescript": "^3.0.3"
+    "typescript": "^3.8.3"
   }
 }

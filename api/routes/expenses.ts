@@ -7,8 +7,8 @@ import { dirname } from 'path';
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  const limit = parseInt(req.query.limit) || 25
-  const offset = parseInt(req.query.offset) || 0
+  const limit = +(req.query.limit) || 25
+  const offset = +(req.query.offset) || 0
 
   res.send({
     expenses: expenses
