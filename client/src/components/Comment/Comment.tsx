@@ -19,7 +19,9 @@ class Comment extends Component<ICommentProps, ICommentState> {
   }
 
   onCommentChange = (event: any) => {
-    this.setState({ comment: event.target.value })
+    if(event.target.value.trim() !== ''){
+      this.setState({ comment: event.target.value })
+    }
   };
 
   addComment = async () => {
@@ -35,7 +37,7 @@ class Comment extends Component<ICommentProps, ICommentState> {
         }
       );
       this.props.fetchExpense();
-      this.setState({ comment: ' ' });
+      this.setState({ comment: '' });
       return await response.json();
     }
   };
