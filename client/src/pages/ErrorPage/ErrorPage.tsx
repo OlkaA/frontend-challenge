@@ -5,7 +5,7 @@ class ErrorPage extends Component {
     render() {
         return (
             <div className='page'>
-                <span>404</span>
+                <span className="error-text">404</span>
                 <h1 className='home-page-title'>
                     Page not found.
                     </h1>
