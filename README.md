@@ -8,8 +8,7 @@
 - [Used technologies](#used-technologies)
 
 ## About  <a name = "about"></a>
-Implemented an expenses list, fetching all expenses from the provided API. 
-Allow the user to add notes and upload receipt pictures to each expense.
+Implemented a short version of Pleo App.
 
 ## Getting started <a name = "getting-started"></a>
 
@@ -21,20 +20,26 @@ Allow the user to add notes and upload receipt pictures to each expense.
 ## How to use app, functionality <a name = "how-to-use-app"></a>
 App has several pages:
 - HomePage has navigation in the top right corner. \
- By clicking on Expenses it will be redirectered to Expenses page with list of all expenses.\
- By clicking on About it will be redirectered to About page with short description of the project.
+ By clicking on Expenses user will be redirectered to Expenses page with list of all expenses.\
+ By clicking on About user will be redirectered to About page with short description of the project.
  
-- ExpensesPage
+- ExpensesPage\
  User can see list of expenses.\
  User can navigate to next/previous page to see next part of list of expenses.\
- User can filter on expenses (client side filters) by name of the user or/and by merchant\
- User can sort expenses by first name of user or by Merchant.
- User can click on the button `See more` to see detailed information about specific expense
+ User can filter on expenses (client side filters) by name of the user or/and by merchant.\
+ User can sort expenses by first name of user or by Merchant.\
+ User can click on the button `See more` to see detailed information about specific expense.
  
- - ExpensePage
- User can see detailed information about specific exspense.
- User can add a comment on an expense. 
+ - ExpensePage\
+ User can see detailed information about specific exspense.\
+ User can add a comment on an expense. \
  User can add a receipt image on an expense. 
+ 
+ - AboutPage\
+ User can see a short description of the project.
+ 
+  - ErrorPage\
+ If user enters non-existing url, Error page will appear.
 
 ## Used technologies <a name = "used-technologies"></a>
 - A single page application using React.
